@@ -1,0 +1,247 @@
+{
+  "experiment": "qlora",
+  "model": "Qwen/Qwen2.5-1.5B",
+  "num_samples": 40,
+  "results": [
+    {
+      "id": 1,
+      "question": "Can you explain what RAG is?",
+      "reference": "RAG is a system architecture that combines information retrieval with large language model generation.",
+      "prediction": "RAG is a retrieval-aided generation model that combines retrieval and generation."
+    },
+    {
+      "id": 2,
+      "question": "What are the typical steps involved in a RAG pipeline?",
+      "reference": "A typical RAG pipeline includes document loading, chunking, embedding, indexing, retrieval, optional reranking, context construction, and generation.",
+      "prediction": "A RAG pipeline typically involves document retrieval, document selection, document aggregation, and document generation."
+    },
+    {
+      "id": 3,
+      "question": "Why is retrieving relevant information important in RAG?",
+      "reference": "Retrieval is important because the language model cannot reliably use external knowledge if the relevant evidence is not retrieved.",
+      "prediction": "Retrieving relevant information is important because it helps the model focus on the most relevant parts of the document, improving its accuracy and efficiency."
+    },
+    {
+      "id": 4,
+      "question": "How would you define a text embedding?",
+      "reference": "A text embedding is a numerical vector representation of text.",
+      "prediction": "A text embedding is a numerical vector representation of a text."
+    },
+    {
+      "id": 5,
+      "question": "How do embeddings help with semantic search?",
+      "reference": "Embeddings allow systems to retrieve semantically similar documents even when the query and document use different words.",
+      "prediction": "Embeddings capture semantic relationships between words, allowing the similarity between queries and documents to be computed based on semantic similarity."
+    },
+    {
+      "id": 6,
+      "question": "If two vectors are normalized to unit length, what does their dot product represent?",
+      "reference": "When vectors are normalized to unit length, their dot product is equivalent to cosine similarity.",
+      "prediction": "The dot product of two normalized vectors is equal to the cosine of the angle between them."
+    },
+    {
+      "id": 7,
+      "question": "What role does BGE-M3 play in a RAG system?",
+      "reference": "BGE-M3 is used to convert queries and document chunks into embedding vectors for dense retrieval.",
+      "prediction": "BGE-M3 is a memory module that stores the context and retrieval results."
+    },
+    {
+      "id": 8,
+      "question": "How does dense retrieval work?",
+      "reference": "Dense retrieval represents queries and documents as vectors and searches for vectors that are close to the query vector.",
+      "prediction": "Dense retrieval uses a dense retrieval model to retrieve candidate documents that are similar to the query."
+    },
+    {
+      "id": 9,
+      "question": "What is FAISS typically used for in retrieval systems?",
+      "reference": "FAISS is used for efficient similarity search over dense vectors.",
+      "prediction": "FAISS is typically used for dense retrieval."
+    },
+    {
+      "id": 10,
+      "question": "Can FAISS itself produce a natural-language response?",
+      "reference": "No. FAISS performs retrieval, while the language model generates the final natural language answer.",
+      "prediction": "No, FAISS does not produce natural-language responses."
+    },
+    {
+      "id": 11,
+      "question": "How would you describe BM25?",
+      "reference": "BM25 is a classical lexical information retrieval algorithm.",
+      "prediction": "BM25 is a lexical retrieval algorithm that uses term frequency-inverse document frequency (TF-IDF) and term frequency (TF) to retrieve relevant documents."
+    },
+    {
+      "id": 12,
+      "question": "Which factors are taken into account by BM25?",
+      "reference": "BM25 considers term frequency, inverse document frequency, and document length normalization.",
+      "prediction": "BM25 considers the frequency of the term in the document and the document length normalization."
+    },
+    {
+      "id": 13,
+      "question": "For what types of queries is BM25 especially effective?",
+      "reference": "BM25 is particularly useful for exact technical terms, names, identifiers, rare keywords, and specific phrases.",
+      "prediction": "BM25 is especially effective for queries that contain multiple keywords."
+    },
+    {
+      "id": 14,
+      "question": "Why can BM25 be effective when searching for exact technical terminology?",
+      "reference": "BM25 uses lexical matching, so exact technical terms and rare keywords can strongly contribute to document relevance.",
+      "prediction": "BM25 can be effective because it uses lexical matching, which is sensitive to exact word order and case."
+    },
+    {
+      "id": 15,
+      "question": "Why can whitespace-based tokenization be unsuitable for Chinese BM25?",
+      "reference": "Chinese words are generally not separated by spaces, so whitespace tokenization may not provide useful word-level tokens.",
+      "prediction": "Chinese characters are not separated by spaces, so whitespace-based tokenization may not accurately represent the intended tokens."
+    },
+    {
+      "id": 16,
+      "question": "What does hybrid retrieval mean?",
+      "reference": "Hybrid retrieval combines multiple retrieval methods, commonly dense retrieval and lexical retrieval.",
+      "prediction": "Hybrid retrieval combines multiple retrieval methods to improve retrieval performance."
+    },
+    {
+      "id": 17,
+      "question": "What is the benefit of using FAISS together with BM25?",
+      "reference": "FAISS captures semantic similarity while BM25 captures lexical matching, so they can complement each other.",
+      "prediction": "FAISS can be used to retrieve candidate documents, while BM25 can be used to rank those candidates."
+    },
+    {
+      "id": 18,
+      "question": "Why shouldn't the raw scores from FAISS and BM25 simply be summed?",
+      "reference": "Their scores come from different algorithms and generally have different numerical scales.",
+      "prediction": "FAISS and BM25 use different similarity measures, so simply summing the raw scores would not provide a meaningful similarity score."
+    },
+    {
+      "id": 19,
+      "question": "What does Reciprocal Rank Fusion (RRF) do?",
+      "reference": "RRF is a rank aggregation method that combines multiple ranked lists using reciprocal rank contributions.",
+      "prediction": "RRF combines the rank scores of multiple retrieval models using reciprocal rank."
+    },
+    {
+      "id": 20,
+      "question": "How is the contribution of a document calculated in RRF?",
+      "reference": "For a document at rank r, its RRF contribution is 1 divided by k plus r.",
+      "prediction": "The contribution of a document is calculated as the reciprocal of the document frequency plus one."
+    },
+    {
+      "id": 21,
+      "question": "Which k value is used for RRF in this project?",
+      "reference": "The project uses k equal to 60.",
+      "prediction": "RRF uses k = 1."
+    },
+    {
+      "id": 22,
+      "question": "Why does RRF combine rankings rather than raw retrieval scores?",
+      "reference": "RRF uses rankings because different retrieval systems can produce scores with incompatible numerical scales.",
+      "prediction": "RRF combines rankings because retrieval scores are not comparable."
+    },
+    {
+      "id": 23,
+      "question": "What is meant by reranking in information retrieval?",
+      "reference": "Reranking is a second-stage retrieval process that refines the ranking of candidate documents.",
+      "prediction": "Reranking is the process of refining the ranking of candidate documents using additional information."
+    },
+    {
+      "id": 24,
+      "question": "Why is reranking usually done after the initial retrieval stage?",
+      "reference": "First-stage retrieval efficiently produces a candidate set, while reranking uses a more expensive model to improve precision among those candidates.",
+      "prediction": "Reranking is usually done after the initial retrieval stage because the initial retrieval stage may not have retrieved relevant documents."
+    },
+    {
+      "id": 25,
+      "question": "How does a cross-encoder reranker determine document relevance?",
+      "reference": "A cross-encoder reranker receives a query and document together and directly models their interaction to estimate relevance.",
+      "prediction": "A cross-encoder reranker uses a cross-encoder to determine document relevance by comparing the relevance scores of candidate documents to the query."
+    },
+    {
+      "id": 26,
+      "question": "What is BGE-Reranker-v2-M3 used for?",
+      "reference": "It is used as a multilingual reranking model to refine the ranking of candidate documents.",
+      "prediction": "BGE-Reranker-v2-M3 is used for reranking documents in a retrieval system."
+    },
+    {
+      "id": 27,
+      "question": "Why is a cross-encoder reranker normally applied to only a limited number of candidates?",
+      "reference": "Cross-encoder reranking is computationally more expensive than first-stage retrieval, so it is normally applied to a relatively small candidate set.",
+      "prediction": "A cross-encoder reranker is normally applied to only a limited number of candidates because cross-encoders are typically trained to capture semantic similarity between candidate documents."
+    },
+    {
+      "id": 28,
+      "question": "What does Recall@K tell us about a retrieval system?",
+      "reference": "Recall@K measures whether a relevant document appears within the top K retrieved results.",
+      "prediction": "Recall@K tells us how many relevant documents are retrieved for a given query."
+    },
+    {
+      "id": 29,
+      "question": "What does the MRR metric measure?",
+      "reference": "MRR measures how highly the first relevant result is ranked using the reciprocal of its rank.",
+      "prediction": "MRR measures the mean reciprocal rank."
+    },
+    {
+      "id": 30,
+      "question": "How does Recall@K differ from MRR?",
+      "reference": "Recall@K checks whether a relevant result appears within the top K, while MRR also considers how highly the first relevant result is ranked.",
+      "prediction": "Recall@K considers the rank of the retrieved documents, while MRR considers the relevance score."
+    },
+    {
+      "id": 31,
+      "question": "In RAG evaluation, what does faithfulness measure?",
+      "reference": "Faithfulness measures whether the generated answer is supported by the retrieved context.",
+      "prediction": "Faithfulness measures whether the generated response is semantically similar to the reference."
+    },
+    {
+      "id": 32,
+      "question": "Is it possible to assess retrieval quality separately from the LLM?",
+      "reference": "Yes. Retrieval can be evaluated independently using metrics such as Recall@K and MRR.",
+      "prediction": "Yes, retrieval quality can be assessed separately from the LLM."
+    },
+    {
+      "id": 33,
+      "question": "If a query contains a rare technical term that must match exactly, which retrieval method would be a good choice?",
+      "reference": "BM25 is likely to be useful because it performs lexical matching and benefits from exact and rare terms.",
+      "prediction": "A query term retriever would be a good choice because it can retrieve documents where the rare term appears exactly as in the query."
+    },
+    {
+      "id": 34,
+      "question": "Which retrieval approach is helpful when a query and document express the same idea using different wording?",
+      "reference": "Dense retrieval is likely to help because it retrieves documents based on semantic similarity.",
+      "prediction": "Semantic retrieval is helpful because it can retrieve relevant documents even if the query and document use different words."
+    },
+    {
+      "id": 35,
+      "question": "Why is RRF a good way to combine FAISS and BM25 results?",
+      "reference": "RRF combines their rankings without requiring their raw relevance scores to have the same numerical scale.",
+      "prediction": "RRF combines the results of FAISS and BM25 by weighting them based on their relevance scores."
+    },
+    {
+      "id": 36,
+      "question": "What may happen to a vector index if the embedding model is replaced?",
+      "reference": "The vector index may need to be rebuilt because the stored vectors belong to the original embedding space.",
+      "prediction": "The vector index may become less effective because the vectors are no longer aligned."
+    },
+    {
+      "id": 37,
+      "question": "Does BM25 need a neural network to be trained for retrieval?",
+      "reference": "No. BM25 is a classical lexical retrieval algorithm and does not require training a neural network during retrieval.",
+      "prediction": "No, BM25 does not need a neural network to be trained."
+    },
+    {
+      "id": 38,
+      "question": "What is the usual sequence when using hybrid retrieval followed by reranking?",
+      "reference": "FAISS and BM25 retrieve candidates, RRF combines their rankings, a reranker refines the candidate ranking, and the final chunks are passed to the LLM.",
+      "prediction": "Hybrid retrieval is followed by reranking."
+    },
+    {
+      "id": 39,
+      "question": "Why is it useful to evaluate retrieval and answer generation separately?",
+      "reference": "Retrieval evaluation measures whether relevant evidence was retrieved, while generation evaluation measures the quality and faithfulness of the final answer.",
+      "prediction": "Evaluating retrieval and answer generation separately allows for better understanding of the model's performance in each task."
+    },
+    {
+      "id": 40,
+      "question": "Do we know from this knowledge base who invented the Transformer architecture?",
+      "reference": "I don't know.",
+      "prediction": "No, we do not know who invented the Transformer architecture."
+    }
+  ]
+}
